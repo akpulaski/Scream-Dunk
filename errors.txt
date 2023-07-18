@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/runningMini.rpy", line 5: The text statement is not a valid child of the imagebutton statement.
+    text "[points] / [max_point]" size 40
+        ^
+
+Ren'Py Version: Ren'Py 8.1.1.23060707
+Tue Jul 18 12:42:34 2023

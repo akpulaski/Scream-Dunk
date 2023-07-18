@@ -1,0 +1,5 @@
+define ath = Character("Bitchy Athlete")
+define bread = Character("Bread Head")
+define pov = Character("Main Character")
+define older = Character("Older man")
+define creep = Character("Creepy Man")

@@ -1,0 +1,1 @@
+image mc = "mc_temp.png"
