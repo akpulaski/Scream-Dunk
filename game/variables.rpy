@@ -1,7 +1,7 @@
 #clicker game stuff
 default points=10
 default plus=2
-default max_point=30
+default max_point=100
 default clicked = True
 
 #random choices

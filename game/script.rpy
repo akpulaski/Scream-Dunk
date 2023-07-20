@@ -33,8 +33,10 @@ label bitchyIntroduction:
         "Athletic Woman" "Is that a fucking knife you brought here?!? That's against the rules! I'm telling everyone."
         "Athletic Woman" "I knew something was off when I saw you here!"
         "What the hell is her problem?"
+        show mc at left 
         pov "Hey hey hey. What?!"
         pov "I just found it lying over here in all this junk! It's not mine."
+        hide mc 
         "Athletic Woman" "Yeah, sure. I don't give a shit, rookie. I'm winning anyway."
         "She speaks with a sneer."
         menu: 
@@ -50,25 +52,32 @@ label bitchyIntroduction:
 label creepIntroduction: 
     hide athlete 
     "Just then another man barges into the room."
+    show creep at right 
     "Man " "Heya, juniors. Whatcha whippersnappers up to, ey?"
     "Man " "Things going fiiiiiiiine - hic- in here?"
     "He slurs his words with a disingenuous smile."
     "He staggers towards the bitchy athlete."
-    "Well, you a pretty thing ain't ya?"
+    "Man ""Well, you a pretty thing ain't ya?"
     "He leers down at her as she cringes."
+    show mc annoyed at left 
     pov "Dude, back off."
+    hide mc
     jump olderIntroduction
 
 label olderIntroduction: 
     "Another man, older, comes in the room."
     "Concern is written all over his face."
+    hide creep
     show older suit at right 
     older "Hey guys. Just wanted to check in. Everything alright in here?"
     "He looks towards the girl and I, pointedly ignoring the creep."
-    pov "Yessir. We were just ahvinga discu--"
+    show mc at left
+    pov "Yessir. We were just having a discu--"
+    hide mc 
     show athlete annoyed at left
     ath "Absolutely not! This pisshead right here is downright an absolute creep. Disgusting."
     hide athlete 
+    show creep annoyed at left 
     creep "Watch yer language, missy. Or I might have to teach ya some manners."
     "The creep steps forward, but the older man steps in the way."
     show older suit annoyed at right
@@ -82,12 +91,16 @@ label olderIntroduction:
         "Pull the knife on the creep." if hasKnife: 
             $ cruel += 1
             "I pull the knife out from my waistband and point it at the creep."
+            show mc annoyed at right 
             pov "Stop it! Now."
+            show creep scared 
             creep "What the f-"
             "The creep jumps back, and so does the older man."
         "Try to break up the fight.":
             $ kind += 1
             "I quickly move forward to try and intercept the creep."
+            hide older 
+            show mc at right
             pov "Stop it! Don't we have more important things to deal with?!" 
             "The creep takes a swing at me as well, striking my face hard."
         "Flee and look for help.": 
@@ -129,6 +142,7 @@ label initialLineup:
             "But he doesn't listen to the Breadhead's warning."
             "Scared Contestant" "Yeah, whatever. Consequences be damned."
             "He continues to walk away."
+            play audio gunshotFar
             "Then a gunshot rings out."
             "A panicked shriek erupts from the group as they watch the scene in horror."
             "Almost out of nowhere, two masked men appear."
@@ -143,21 +157,41 @@ label initialLineup:
             "Everyone else stays in line, waiting to see what happens."
             bread "Come back here, friend! Trust me, you do not want to face the consequences!"
             "I continue to walk."
+            play audio gunshotFar
             "A gunshot rings out, and I suddenly feel a deep pain in my back before another, and another."
             "Everything fades to black."
+            jump shotBadEnd
     
 
 label firstDeath: 
+    bread "Oops! What a pitiful ending! I'm sorry you had to see that, friend!"
+    bread "Just a mere interruption. I trust that it will be the last."
+    bread "Well, that brings us to the third and final rule: No one is allowed to exit the game!"
+    bread "After all, you made the choice to play games for a handsome reward, didn't you? A high reward always comes at high stakes!"
+    "Did I sign up for something like this? I don't feel like I did..."
+    "I try to speak up but the BreadHead continues without so much as a breath."
+    bread "I believe it's best we immediately start off the games, we're already behind because of the disruption caused by our poor littel friend."
+    bread "There will be a totla of five games of various exciting adventures."
+    bread "Some of you will be eliminated, but I wish nothing but the best to all of you, friends!"
+    bread "So let's move on to the first round!"
+    jump distanceRun
 
-label outsideGameOne: 
-    show field bg
-    "The group is now outside, ready for the first game."
-    bread "You've got to run away from the masked killer! Else he'll stabby stab!"
-    bread "He'll probably be content when he kills three people!"
-    "Here there's a clicker game."
+label distanceRun: 
+    "The air immediately shifts, and the area seems darker."
+    "Everyone looks uneasily between each other, but everyone moves to follow the Bread Head."
+    show field horror bg 
+    show bread at left 
+    bread "A game of distance running, how exciting! There's only one rule: Just keep running! That's right, all you have to do is not stop."
+    bread "Now, move on now! Time's a-wastin'!"
+    hide bread
+    "We all shuffle towards the tracks."
+    play audio gunshotClose
+    "I get ready to run, but I still stumble at the sound of the gunshot."
+    bread "Go go go!"
     jump clickerBegin
 
 label clickerBegin:
+    scene field horror bg
     centered "Click your character to run.{w=1}{nw}"
     call screen clicker
 

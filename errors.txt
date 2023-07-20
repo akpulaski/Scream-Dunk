@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/runningMini.rpy", line 5: The text statement is not a valid child of the imagebutton statement.
-    text "[points] / [max_point]" size 40
-        ^
+File "game/runningMini.rpy", line 23: expected 'comma or end of line' not found.
+    at left 
+    ^
+
+File "game/runningMini.rpy", line 27: expected 'comma or end of line' not found.
+    at left 
+    ^
 
 Ren'Py Version: Ren'Py 8.1.1.23060707
-Tue Jul 18 12:42:34 2023
+Thu Jul 20 13:55:20 2023

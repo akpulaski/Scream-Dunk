@@ -12,8 +12,8 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Scream Dunk")
-
+define config.name = _("Dreadfield Stadium")
+define build.itch_project = "yellow-prince-games/dreadfield-stadium"
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
@@ -184,6 +184,8 @@ init python:
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
 
+    build.directory_name = "DreadfieldStadium-0.1"
+    build.executable_name="DreadfieldStadium"
     ## To archive files, classify them as 'archive'.
 
     # build.classify('game/**.png', 'archive')
