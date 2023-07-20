@@ -132,16 +132,20 @@ label initialLineup:
     bread "Rule Number Two: If you lose, you WILL die. This will be your last stop."
     "At this, the group protests as panic washes over them."
     "Incredulous Contestant" "He can't be serious. This has to be a joke."
+    show creep scared at right 
     creep "Psh. Incredibly \'funny\'."
+    hide creep
     menu: 
         "Nerves rise in my stomach and I..."
         "Stay in line.": 
+            show con1 scared at right 
             "Scared Contestant" "The fuck, dude?!? Only ONE winner??? I don't care man, I'm outta here."
             "The man starts to walk away."
             bread "Come back here, friend! Trust me, you do not want to face the consequences!"
             "But he doesn't listen to the Breadhead's warning."
             "Scared Contestant" "Yeah, whatever. Consequences be damned."
             "He continues to walk away."
+            hide con1 
             play audio gunshotFar
             "Then a gunshot rings out."
             "A panicked shriek erupts from the group as they watch the scene in horror."
@@ -185,9 +189,18 @@ label distanceRun:
     bread "Now, move on now! Time's a-wastin'!"
     hide bread
     "We all shuffle towards the tracks."
+    show older at right 
+    older "Good luck, kid."
+    show mc at left 
+    pov "Uh... thanks?"
+    hide older 
+    show ath at right 
+    ath "Psh."
+    hide mc 
+    hide ath
     play audio gunshotClose
     "I get ready to run, but I still stumble at the sound of the gunshot."
-    bread "Go go go!"
+    bread "Go go go, friends! We are just getting started! Hurrah!"
     jump clickerBegin
 
 label clickerBegin:
@@ -196,19 +209,33 @@ label clickerBegin:
     call screen clicker
 
 label clickWin:
-    $ renpy.pause(2, hard=True)
-    centered "Wow you didn't die!"
-    jump gameOneConclusion
+    play audio gunshotFar
+    "As I run, I hear gunshots going off towards the back, but I can't look back now."
+    "Pained shrieks fill the air, but I keep running."
+    "Beside me, I see the older guy, the athletic woman, and the creep managing to keep good pace."
+    "A horn blares out, we all hesitantly slow."
+    show bread at left
+    bread "Aaaaand that brings us to the end of the game, champs! You all did well!"
+    bread "It's a shame that some of our friends will have to leave us."
+    "I try to look the other way as the masked killers gather up the bleeding out contestants left in their wake."
+    show killer at right
+    play audio fire
+    "The killer then douses the pile and lights it aflame with the drop of a match."
+    "Putrid smell fills the air as the screams slowly die out."
+    jump 
 
 label clickLost:
-    centered "Oops dead."
+    scene field horror bg 
+    "I run as hard as I can, but soon I find myself faltering."
+    show killer at left
+    show mc scared at right
+    killer "Gotcha!"
+    "I feel the knife slip between my ribs, then everything goes black as I fall."
+    play audio fire 
+    "I'm aware of the sloshing of a liquid, then feel the flames lick at my skin."
+    "I scream in agony in my last few moments."
     return
 
-label gameOneConclusion: 
-    "You run for what feels like forever. One, two, then three others fall and the masked killer stops chasing."
-    "Hestitantly people slow and eventually come to a stop when they confirm the killer is satisfied."
-    bread "Wow congratz! You survived! Next game time! No times for breaks!"
-    jump outsideGameTwo
 
 label outsideGameTwo: 
     "Long jump goes here. Distance set by previous successes. So further for those who go later."
