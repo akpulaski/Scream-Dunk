@@ -1,4 +1,4 @@
-Fri Jul 21 20:48:02 2023
+Fri Jul 21 21:33:17 2023
 macOS-13.4.1-arm64-arm-64bit
 Ren'Py 8.1.1.23060707
  
@@ -6,12 +6,12 @@ Ren'Py 8.1.1.23060707
 Bootstrap to the start of init.init. took 0.02s
 Early init. took 0.00s
 Loader init. took 0.01s
-Loading error handling. took 0.02s
-Loading script. took 0.10s
+Loading error handling. took 0.06s
+Loading script. took 0.75s
 Loading save slot metadata. took 0.02s
 Loading persistent. took 0.00s
-Running init code. took 0.02s
-Loading analysis data. took 0.01s
+Running init code. took 0.04s
+Loading analysis data. took 0.00s
 Analyze and compile ATL. took 0.00s
 Reloading save slot metadata. took 0.01s
 Index archives took 0.00s
@@ -26,29 +26,8 @@ Cleaning stores took 0.00s
 Init translation took 0.01s
 Build styles took 0.00s
 Load screen analysis took 0.00s
-Analyze screens took 0.00s
+Analyze screens took 0.01s
 Save screen analysis took 0.01s
-Prepare screens took 0.03s
-Save pyanalysis. took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.01s
 Save bytecode. took 0.02s
-Running _start took 0.00s
-Performance test:
-Interface start. took 0.20s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1470, 956)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'Apple'"
-Renderer: b'Apple M2'
-Version: b'2.1 Metal - 83.1'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1368, 770) drawable=(2736, 1540)
-Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
