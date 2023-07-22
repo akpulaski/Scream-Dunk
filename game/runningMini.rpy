@@ -1,13 +1,13 @@
 screen clicker:
     modal True
     timer .5 repeat True action [If(points <= 0, true=Jump("clickLost"), false=SetVariable("points", points - plus))]
-    timer .5 repeat True action [If(points > 0, true=Call("showKiller"), false=Jump("clickLost"))]
+    timer 1 repeat True action [If(points > 0, true=Jump("showKiller"), false=Jump("clickLost"))]
     imagebutton:
         idle "mc"
         xpos .6
         ypos .3
         action [SetVariable("clicked", True), If(points >= max_point, true=Jump("clickWin"), false=SetVariable("points", points + plus))]
-    
+    vbar value StaticValue(points, max_point)
     
 label showKiller:    
     if points > 75: 

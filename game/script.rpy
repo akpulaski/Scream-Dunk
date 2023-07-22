@@ -123,7 +123,7 @@ label loudspeaker:
     jump initialLineup
 
 label initialLineup: 
-    play music main
+    play music gamesBegin
     show field bg 
     show bread at left
     bread "Very well! Now I'm sure you all know why you are here. Play games, win prizes of course! HaHa!"
@@ -148,6 +148,7 @@ label initialLineup:
             hide con1 
             play audio gunshotFar
             "Then a gunshot rings out."
+            play audio manScream2
             "A panicked shriek erupts from the group as they watch the scene in horror."
             "Almost out of nowhere, two masked men appear."
             show killer at right 
@@ -163,6 +164,8 @@ label initialLineup:
             "I continue to walk."
             play audio gunshotFar
             "A gunshot rings out, and I suddenly feel a deep pain in my back before another, and another."
+            play music loss
+            show black with fade
             "Everything fades to black."
             jump shotBadEnd
     
@@ -182,25 +185,27 @@ label firstDeath:
 
 label distanceRun: 
     "The air immediately shifts, and the area seems darker."
-    "Everyone looks uneasily between each other, but everyone moves to follow the Bread Head."
+    play music main
     show field horror bg 
+    "Everyone looks uneasily between each other, but everyone moves to follow the Bread Head."
     show bread at left 
     bread "A game of distance running, how exciting! There's only one rule: Just keep running! That's right, all you have to do is not stop."
     bread "Now, move on now! Time's a-wastin'!"
     hide bread
     "We all shuffle towards the tracks."
-    show older at right 
+    show older shirt at right 
     older "Good luck, kid."
     show mc at left 
     pov "Uh... thanks?"
-    hide older 
-    show ath at right 
+    hide older  
+    show athlete at right 
     ath "Psh."
     hide mc 
-    hide ath
+    hide athlete
     play audio gunshotClose
     "I get ready to run, but I still stumble at the sound of the gunshot."
     bread "Go go go, friends! We are just getting started! Hurrah!"
+    play music minigame
     jump clickerBegin
 
 label clickerBegin:
@@ -211,55 +216,120 @@ label clickerBegin:
 label clickWin:
     play audio gunshotFar
     "As I run, I hear gunshots going off towards the back, but I can't look back now."
+    play audio womanScream1
     "Pained shrieks fill the air, but I keep running."
     "Beside me, I see the older guy, the athletic woman, and the creep managing to keep good pace."
     "A horn blares out, we all hesitantly slow."
+    play music main 
+    hide killer
     show bread at left
     bread "Aaaaand that brings us to the end of the game, champs! You all did well!"
     bread "It's a shame that some of our friends will have to leave us."
+    play audio manScream3
     "I try to look the other way as the masked killers gather up the bleeding out contestants left in their wake."
     show killer at right
     play audio fire
     "The killer then douses the pile and lights it aflame with the drop of a match."
     "Putrid smell fills the air as the screams slowly die out."
-    jump 
+    bread "Nearly as unpleasant as it was necessary. Now we are closer to the prize. Just a few more games to go!"
+    jump longJump
 
 label clickLost:
     scene field horror bg 
+    play music loss 
     "I run as hard as I can, but soon I find myself faltering."
     show killer at left
     show mc scared at right
     killer "Gotcha!"
     "I feel the knife slip between my ribs, then everything goes black as I fall."
+    show black with fade
     play audio fire 
     "I'm aware of the sloshing of a liquid, then feel the flames lick at my skin."
     "I scream in agony in my last few moments."
     return
 
 
-label outsideGameTwo: 
-    "Long jump goes here. Distance set by previous successes. So further for those who go later."
-    "Maybe a timing mini game."
-    jump gameTwoConclusion
-
-label gameTwoConclusion: 
-    bread "Wow you did it again! That guy didn't do it and now he's in agnoizing pain!"
-    bread "On to the next thing!"
-
-label outsideGameThree: 
-    "This stage is less a game and more just brutal murder!"
-    bread "Kill someone!"
-    older "Kill the creep."
-    creep "Wait no."
+label longJump: 
+    scene long bg 
+    show bread at left 
+    bread "It's time for the second round! Just a simple competition of long jump!"
+    bread "Each one of you will just have to pick any random number, from one to ten, which will determine your position in the jumping order."
+    bread "Hop on now. Take your pick!"
     menu: 
-        "Sacrifice yourself.": 
-            jump sacrificeEnd
-        "Kill the creep.": 
-            jump killedSomeone
-        "Kill the bitch.": 
-            jump killedSomeone
-        "Kill the old man.": 
-            jump killedSomeone
+        "I pick a smaller number, better to get it over with.": 
+            $ max_score_required = 8
+        "I pick a mid-range number, some before some after seems safest.": 
+            $ max_score_required = 13
+        "I pick a higher number, best to develop a strategy.": 
+            $ max_score_required = 18
+    "Once everyone has picked a number, Bread Head gets us all to line up in order."
+    bread "Oh, one last thing! The distance will be determined by the best jumper before you! But we can't start with nothing."
+    scene long horror bg
+    "Masked killers make their way out onto the field, filling the sand with traps and broken glass."
+    "I swallow hard, waiting my turn in the order."
+    play music minigame
+    centered "Press the space bar in the green area to aim.{w=1}{nw}"
+    jump start_minigame
+
+label longJumpEnding: 
+    "Finally, everyone has jumped except the final person: the creepy guy."
+    "Those who failed have been left to lie where they fell. Making the field a broken mess of bodies, blood, and traps."
+    show bread at left 
+    bread "You're next, friend! Go big or go home!"
+    bread "Just kidding, you have no choice here. All the best anyways!"
+    show creep annoyed at right 
+    creep "Shut the fuck up."
+    hide bread
+    "He then takes a running leap... and almost makes it!"
+    play audio manScream4
+    show creep scared at right
+    creep "Ah! My leg, my leg!"
+    show killer at left 
+    "He's approached by one of the masked killers, but he takes a swing at them."
+    creep "No, no! I'm... fine... I can keep competeing."
+    show killer sad 
+    killer "..."
+    show bread at left 
+    bread "Fine! If you think you can continue, all the best for you!"
+    bread "Those who can't though... gather them up!"
+    "I try to look away once more as the masked killers pile up the others, taking no care to cause more pain as they drag the bodies out of the pit."
+    "The creep seems to be struggling to limp over to the others."
+    menu: 
+        "I go and help him.": 
+            show creep 
+            creep "Thanks, man. You're... not so bad."
+            show mc at left 
+            pov "No problem, this whole thing is fucked."
+            $ kind += 1 
+        "I let him struggle.": 
+            show creep annoyed 
+            creep "Let's just get on with it."
+            $ cruel += 1
+    jump halfTime
+
+label halfTime: 
+    scene locker bg 
+    play music main 
+    "Everyone gathers around the locker room, falling into the benches."
+    "I look around the exhausted faces, shell shocked and terrified."
+    show older shirt at left 
+    older "How's everyone holding up?"
+    show athlete annoyed at right 
+    ath "How's everyone holding up?! We're being killed out there!"
+    ath "I knew I'd have to work hard to get this money, but I didn't expect to leave a pile of bodies in my wake!"
+    "I narrow my eyes at her... Even now she's still insistant that she's going to win."
+    show creep at right
+    creep "We need to do something! We need to..."
+    creep "Kill the Bread Head!"
+    menu: 
+        "I agree.": 
+            show mc at left 
+            pov "That's not a bad idea! Maybe we can take them! There's more of us."
+        "I disagree": 
+            show mc annoyed at left
+            pov "Are you kidding? How are we going to do that?"
+    "Here's the end of the current build. Thanks for playing!"
+    return 
 
 label sacrificeEnd: 
     "Oh how noble."
@@ -314,5 +384,30 @@ label bleedOut:
 
 label shotBadEnd:
     "Maybe walking away wasn't the best idea."
+    "Try again?"
+    return
+
+#starts the long jump mini game
+label start_minigame:
+    show screen fable_timer_left
+    call screen fable_2_minigame
+
+label end_minigame: #End minigame. And jump continue game
+    hide screen fable_2_minigame
+    $ renpy.pause(0.3)
+    jump gameTwoConclusion #continue game
+
+label timingFailure:
+    play music loss 
+    "I take a deep breath and then run towards the sand pit."
+    "Unfortunately, I do not make the distance I was hoping to..."
+    play audio manScream1
+    play sound crushed 
+    "I scream in pain as I land on a bear trap."
+    show bread at left 
+    bread "Oh, too bad! That's a lot of blood."
+    "I have to agree as everything fades to black."
+    show black with fade 
+    "Better luck next time!"
     "Try again?"
     return

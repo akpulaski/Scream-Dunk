@@ -1,15 +1,9 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After initialization, but before game start.
-  File "game/runningMini.rpy", line 1, in prepare_screen
-    screen clicker:
-  File "game/runningMini.rpy", line 1, in prepare
-    screen clicker:
-  File "game/runningMini.rpy", line 3, in prepare
-    timer .5 repeat True action [If(points <= 0, true=Jump("clickLost"), false=SetVariable("points", points - plus) And call showKiller)]
-  File "game/runningMini.rpy", line 3, in prepare
-    timer .5 repeat True action [If(points <= 0, true=Jump("clickLost"), false=SetVariable("points", points - plus) And call showKiller)]
-SyntaxError: invalid syntax (runningMini.rpy, line 3)
+While running game code:
+  File "game/script.rpy", line 336, in script
+    call screen fable_2_minigame
+ScriptError: could not find label 'TimingFailure'.
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -18,31 +12,17 @@ Full traceback:
     renpy.main.main()
   File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/main.py", line 670, in main
     run(restart)
-  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/main.py", line 93, in run
-    renpy.display.screen.prepare_screens()
-  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/display/screen.py", line 1003, in prepare_screens
-    s.ast.prepare_screen()
-  File "game/runningMini.rpy", line 1, in prepare_screen
-    screen clicker:
-  File "game/runningMini.rpy", line 1, in prepare
-    screen clicker:
-  File "game/runningMini.rpy", line 3, in prepare
-    timer .5 repeat True action [If(points <= 0, true=Jump("clickLost"), false=SetVariable("points", points - plus) And call showKiller)]
-  File "game/runningMini.rpy", line 3, in prepare
-    timer .5 repeat True action [If(points <= 0, true=Jump("clickLost"), false=SetVariable("points", points - plus) And call showKiller)]
-  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/py3analysis.py", line 808, in ast_eval
-    return self.ast_eval_literal(expr)[0]
-  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/py3analysis.py", line 790, in ast_eval_literal
-    expr = py_compile(expr, 'eval', ast_node=True)
-  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/python.py", line 1088, in py_compile
-    raise e
-  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/python.py", line 1034, in py_compile
-    raise orig_e
-  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/python.py", line 1027, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
-SyntaxError: invalid syntax (runningMini.rpy, line 3)
+  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/main.py", line 144, in run
+    renpy.execution.run_context(True)
+  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/execution.py", line 953, in run_context
+    context.run()
+  File "game/script.rpy", line 336, in script
+    call screen fable_2_minigame
+  File "/Users/akpulaski/Applications/renpy-8.1.0-sdk/renpy/script.py", line 1013, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'TimingFailure'.
 
 macOS-13.4.1-arm64-arm-64bit arm64
 Ren'Py 8.1.1.23060707
 Dreadfield Stadium 1.0
-Thu Jul 20 13:45:31 2023
+Fri Jul 21 18:15:45 2023

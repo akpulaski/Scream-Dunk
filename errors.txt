@@ -2,13 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/runningMini.rpy", line 23: expected 'comma or end of line' not found.
-    at left 
-    ^
-
-File "game/runningMini.rpy", line 27: expected 'comma or end of line' not found.
-    at left 
-    ^
+File "game/longMini.rpy", line 25: is not terminated with a newline. (Check strings and parenthesis.)
+            key "K_SPACE" action [If(fable_minigame_score = 0, true = Jump("TimingFailure"), false = SetVariable("fable_minigame_score", 0), Show("you_press_button_bad")]
 
 Ren'Py Version: Ren'Py 8.1.1.23060707
-Thu Jul 20 13:55:20 2023
+Fri Jul 21 18:11:15 2023
