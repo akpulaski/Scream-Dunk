@@ -7,3 +7,7 @@ image obstacle horror bg = "horrorObstacleBackground.png"
 image obstacle bg = "obstacleBackground.png"
 image long horror bg = "horrorJumpBackground.png"
 image long bg = "jumpBackground.png"
+
+#buttons 
+image knife = "gui/knife_idle.png"
+image bloodyKnife = "gui/knife_hover.png"

@@ -15,7 +15,8 @@ init 15 python:
 default lockerChoices = ('a crudely severed finger', 'a blood-covered rag', 'a couple of loose teeth')
 
 #boolean variables for game choices
-default hasKnife = False #found knife in the 
+default hasKnife = False #found knife in the lockerroom
+default hasIdea = False #wants to jump the Bread Head
 
 #stats 
 default kind = 0 

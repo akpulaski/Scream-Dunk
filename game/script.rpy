@@ -289,11 +289,13 @@ label longJumpEnding:
     creep "No, no! I'm... fine... I can keep competeing."
     show killer sad 
     killer "..."
+    hide killer
     show bread at left 
     bread "Fine! If you think you can continue, all the best for you!"
     bread "Those who can't though... gather them up!"
     "I try to look away once more as the masked killers pile up the others, taking no care to cause more pain as they drag the bodies out of the pit."
     "The creep seems to be struggling to limp over to the others."
+    hide bread
     menu: 
         "I go and help him.": 
             show creep 
@@ -318,16 +320,29 @@ label halfTime:
     ath "How's everyone holding up?! We're being killed out there!"
     ath "I knew I'd have to work hard to get this money, but I didn't expect to leave a pile of bodies in my wake!"
     "I narrow my eyes at her... Even now she's still insistant that she's going to win."
+    hide athlete 
     show creep at right
     creep "We need to do something! We need to..."
     creep "Kill the Bread Head!"
     menu: 
         "I agree.": 
+            hide older 
             show mc at left 
             pov "That's not a bad idea! Maybe we can take them! There's more of us."
+            "I feel a rush of energy at the idea, maybe this could work!"
+            $ hasIdea = True
         "I disagree": 
+            hide older 
             show mc annoyed at left
             pov "Are you kidding? How are we going to do that?"
+            creep "We just... jump him and beat the shit out of him."
+    hide mc 
+    show older shirt annoyed at left 
+    older "Boys, now is not the time. Are you forgetting that they have guns?"
+    hide older 
+    show athlete annoyed at left 
+    ath "Besides, you don't really know how many of those masked freaks are with him. There's at least two, but maybe there's more."
+    "Any further discussion is interupted by a voice over the loudspeaker again."
     "Here's the end of the current build. Thanks for playing!"
     return 
 
@@ -395,7 +410,7 @@ label start_minigame:
 label end_minigame: #End minigame. And jump continue game
     hide screen fable_2_minigame
     $ renpy.pause(0.3)
-    jump gameTwoConclusion #continue game
+    jump longJumpEnding #continue game
 
 label timingFailure:
     play music loss 

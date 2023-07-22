@@ -2,8 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/longMini.rpy", line 25: is not terminated with a newline. (Check strings and parenthesis.)
-            key "K_SPACE" action [If(fable_minigame_score = 0, true = Jump("TimingFailure"), false = SetVariable("fable_minigame_score", 0), Show("you_press_button_bad")]
+File "game/screens.rpy", line 323: expected a keyword argument or end of line.
+    ypos 1000: 
+             ^
 
 Ren'Py Version: Ren'Py 8.1.1.23060707
-Fri Jul 21 18:11:15 2023
+Sat Jul 22 17:46:31 2023
