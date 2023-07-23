@@ -594,7 +594,7 @@ screen about():
 
             text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
             text _("Creative Director and Lead Programmer: {a=https://yellow-prince-games.itch.io/}Alex Pulaski{/a}")
-            text _("Artist: Dan")
+            text _("Artist: NexGenInsanity")
             text _("Music and SFX Artist: {a=https://www.soundcloud.com/october_stereo}October{/a}")
             text _("Writer and Additional Programmer: Ielin Daisy")
 

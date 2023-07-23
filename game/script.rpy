@@ -254,6 +254,7 @@ label clickLost:
     play audio fire 
     "I'm aware of the sloshing of a liquid, then feel the flames lick at my skin."
     "I scream in agony in my last few moments."
+    call achievementCheck
     return
 
 
@@ -469,6 +470,7 @@ label sacrificeEnd:
         "Your vision grows blurry as you grab a javelin spear nearby and stab yourself with it..."
         "Everything fades to black..."
         show black with fade
+    call achievementCheck
     return 
 
 label obstacleCourseStart: 
@@ -612,6 +614,7 @@ label javelinKill:
     "Perhaps its the adrenaline or the fear, but I find myself feeling light headed all of the sudden."
     scene black with fade 
     "Everything fades to black."
+    call achievementCheck
     return
 
 label nowinnerEpilogue: 
@@ -636,6 +639,7 @@ label nowinnerEpilogue:
     play audio gunshotClose
     scene black with fade
     "Everything fades to black."
+    call achievementCheck
     return
 
 label badEpilogue: 
@@ -643,6 +647,7 @@ label badEpilogue:
     "No act of mercy here. That isn't how the world works."
     "Your luck had to run out sooner or later."
     "I can here the Bread Head's cheery words as I vaguely feel myself dragged off somewhere."
+    call achievementCheck
     return
 
 label sacrificeEpilogue: 
@@ -654,6 +659,7 @@ label sacrificeEpilogue:
     bread "Why even bother in the first place then, huh?"
     bread "Strange happenings, but now we finally have a winner!"
     "I can here the Bread Head's cheery words as I vaguely feel myself dragged off somewhere."
+    call achievementCheck
     return 
 
 
@@ -666,12 +672,14 @@ label obstacleDeath:
     "The last thing I see before I die is that stupid orange face."
     $ Achievement.add(achievement_name['diedObstacle'])
     scene black with fade 
+    call achievementCheck
     return
 
 label shotBadEnd:
     play music badEnd noloop
     "Maybe walking away wasn't the best idea."
     "Try again?"
+    call achievementCheck
     return
 
 #starts the long jump mini game
@@ -698,6 +706,7 @@ label timingFailure:
     scene black with fade 
     "Better luck next time!"
     "Try again?"
+    call achievementCheck
     return
 
 
@@ -717,4 +726,20 @@ label stabbedBread:
     scene black with fade
     $ Achievement.add(achievement_name['stabbedBread'])
     "Everything fades to black."
+    call achievementCheck
     return
+
+label achievementCheck: 
+    python: 
+        if kind => 3: 
+            Achievement.add(achievement_name['kind'])
+        if cruel => 3: 
+            Achievement.add(achievement_name['cruel'])
+        if coward => 2: 
+            Achievement.add(achievement_name['coward'])
+        if Achievement.has(achievement_name['diedRun'].name) and \
+        Achievement.has(achievement_name['diedObstacle'].name) and \
+        Achievement.has(achievement_name['diedJump'].name) and \
+        Achievement.has(achievement_name['nowinner'].name) and \
+        Achievement.has(achievement_name['loser'].name): 
+            Achievement.add(achievement_name['allBad'])
