@@ -153,11 +153,11 @@ screen achievement_notification_catcher():
     if not achievement_is_done:
         timer 1.0 repeat True:
             action If(achievement_notification_timer > 0.0,
-                      true=SetVariable('achievement_notification_timer', achievement_notification_timer - 1.0), ## Countdown.
-                     false=If(len(achievement_notification_list) > 0,
-                              true=[Hide("achievement_notification"),
+                    true=SetVariable('achievement_notification_timer', achievement_notification_timer - 1.0), ## Countdown.
+                    false=If(len(achievement_notification_list) > 0,
+                            true=[Hide("achievement_notification"),
                                     Function(achievement_notification_show)],
-                             false=[Function(achievement_notification_done)]))
+                            false=[Function(achievement_notification_done)]))
 
 
 screen achievement_notification():

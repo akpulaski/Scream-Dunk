@@ -35,3 +35,4 @@ default killedCreep = False #killed the creep
 default kind = 0 
 default cruel = 0 
 default coward = 0
+default name = "John"

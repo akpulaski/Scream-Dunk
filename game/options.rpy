@@ -95,7 +95,8 @@ define config.end_game_transition = None
 ## A variable to set the transition used when the game starts does not exist.
 ## Instead, use a with statement after showing the initial scene.
 
-
+init python:
+    config.top_layers.append('achievement_notify')
 ## Window management ###########################################################
 ##
 ## This controls when the dialogue window is displayed. If "show", it is always

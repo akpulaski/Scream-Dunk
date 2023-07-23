@@ -75,7 +75,7 @@ init python:
         ##       changes to be reflected. I.e. Delete persistent data.
 
         ## -------------------------- EXAMPLES -------------------------- 
-        "refuseAdventure": Achievement(name=_("No Adventure for Me Today"), message=_("Refuse to go for a walk"), image='gui/noAdvBadAch.png', priority='hidden'),
+    
 
         ## The prio, means that the achievement will be displayed greyed-out before it is granted (or achieved).
         ## I use these terms to describe the types of achievements;
@@ -83,22 +83,24 @@ init python:
         ##        'hidden' = Achievements with this label will be displayed as 'hidden'.
         ##      'platinum' = The final achievement to be granted once all other achievements have been granted.
 
-        "homewrecker": Achievement(name=_("Homewrecker"), message=_("Destroy the Pixie's Home"), image='gui/homewreckerAch.png', priority='hidden'),
-        "refusePixie": Achievement(name=_("I Won't Play Your Games"), message=_("Refuse the Pixie's Request"), image='gui/lostBadAch.png', priority='hidden'),
-        "spiderBad": Achievement(name=_("Snug As A Fly In A Web"), message=_("String Bad End"), image ='gui/spiderBadAch.png', priority='hidden'),
-        "spiderGood": Achievement(name=_("The Old Lady's String"), message=_("Got the String"), image ='gui/gotStringAch.png', priority='hidden'),
-        "bumbleGood": Achievement(name=_("Bumblin' Around"), message=_("Got the Flower"), image = 'gui/gotFlowerAch.png', priority = 'hidden'), 
-        "bumbleBad": Achievement(name=_("Bumblin' Fool"), message=_("Flower Bad End"), image = 'gui/bumbleBadAch.png', priority = 'hidden'), 
-        "rhinoGood": Achievement(name=_("Swole Bros"), message=_("Got the Gum"), image = 'gui/gotGumAch.png', priority = 'hidden'), 
-        "rhinoBad": Achievement(name=_("Weaklings"), message=_ ("Gum Bad End"), image = 'gui/rhinoBadAch.png', priority = 'hidden'), 
-        "monsterous": Achievement(name=_("Monsterous"), message=_ ("Killed the Spider"), image = 'gui/killedSpiderAch.png', priority = 'hidden'),
-        "dragonGood": Achievement(name=_("Ace Flying"), message=_ ("Got the Wrapper"), image = 'gui/flyerAch.png', priority = 'hidden'),
-        "dragonBad": Achievement(name=_ ("Murderer!"), message=_ ("Wrapper Bad End"), image = 'gui/murderBadAch.png', priority = 'hidden'),
-        "ladyGood": Achievement(name=_("My Fair Lady"), message=_ ("Got the Button"), image = 'gui/gotButtonAch.png', priority = 'hidden'),
-        "ladyBad": Achievement(name=_("Aphid Snack"), message=_ ("Button Bad End"), image = 'gui/ladyBadAch.png', priority = 'hidden'), 
-        "badAtThis": Achievement(name=_("Bad At This"), message=_("Got All the Bad Endings"), image = 'gui/trophy_icon.png', priority = 'hidden'), 
-        "homebuilder": Achievement(name=_("Home Builder"), message=_ ("Rebuilt the Pixie's House"), image = 'gui/homeBuilderAch.png', priority = 'hidden'), 
-        "overconfident": Achievement(name=_("Overconfident"), message=_("Tried to Swim Yourself"), image = 'gui/drownedBadAch.png', priority = 'hidden')
+        "gotKnife": Achievement(name=_("Sharper than Expected"), message=_("Unlocked for acquiring a knife and embracing the cutting edge of danger. Watch your step!"), image = 'gui/knifeAch.png', priority='hidden'), 
+        "survivedRun": Achievement(name=_("The Last Lap"), message=_("Cruised to success and claimed the win in the death race!"), image = 'gui/runWinAch.png', priority='hidden'),
+        "diedRun": Achievement(name=_("Fatal Fumble"), message=_("Met the masked killer's deadly embrace after a chilling run-in."), image = 'gui/runLossAch.png', priority='hidden'),
+        "walkAway": Achievement(name=_("Rebel Without A Cheer"), message=_("Chose defiance over the deadly games and faced a fateful farewell shot. A free spirit till the end!"), image = 'gui/walkAwayAch.png', priority='hidden'), 
+        "survivedJump": Achievement(name=_("Leap of Legends"), message=_("Nailed the long jump game and lived to tell the tale! Gravity's got nothing on you!"), image = 'gui/jumpWinAch.png', priority = 'hidden'), 
+        "diedJump": Achievement(name=_("Trapped in Misfortune"), message=_("Fell victim to a bear-y unfortunate end after a botched long jump. Watch your step!"), image = 'gui/jumpLossAch.png', priority = 'hidden'),
+        "sacrificeThird": Achievement(name=_("Conscience Cuts Deep"), message=_("Made a life-altering choice and turned the knife on yourself instead. A haunting decision."), image = 'gui/SuicideOneAch.png', priority = 'hidden'), 
+        "killedSomeone": Achievement(name=_("Deadly Decision Maker"), message=_("Chose a dark path and became a willing participant in another's demise. A chilling turn of events."), image = 'gui/killerAch.png', priority = 'hidden'), 
+        "stabbedBread": Achievement(name=_("Flour Power"), message=_("Tried to take down the masked mascot but got stabbed instead. A half-baked plan!"), image = 'gui/breadStabber.png', priority = 'hidden'), 
+        "diedObstacle": Achievement(name=_("Obstacle Obliteration"), message=_("Tried to conquer the deadly obstacle course, but stumbled into perilous pitfalls. A trial to regret."), image = 'gui/obstacleLossAch.png', priority = 'hidden'), 
+        "survivedObstacle": Achievement(name=_("Perilous Path Master"), message=_("Conquered the labyrinth of danger in the deadly obstacle course."), image = 'gui/obstacleWinAch.png', priority = 'hidden'), 
+        "nowinner": Achievement(name=_("Bread Dead"), message=_("Survived till the fifth round, and chose compassion. Slain for being \"no fun.\""), image = 'gui/noFunAch.png', priority = 'hidden'), 
+        "loser": Achievement(name=_("Spear-itual Delimna"), message=_("Hesitated in the final round but your opponent had never faltered. Their javelin finds its mark."), image = 'gui/loserAch.png', priority = 'hidden'), 
+        "winner": Achievement(name=_("Dreadfield Victor"), message=_("Embraced destiny's duel, and won. Victory ending in triumph in the Dreadfield's brutal arena."), image = 'gui/winnerAch.png', priority = 'hidden'),
+        "allBad": Achievement(name=_("Rest In Peace"), message=_("Get every bad ending"), image = 'gui/allBadAch.png', priority = 'hidden'), 
+        "kind": Achievement(name=_("Kind Soul"), message=_("Pick all the Kind options throughout the game"), image = 'gui/kindAch.png', priority = 'hidden'), 
+        "cruel": Achievement(name=_("Crimson Reaper"), message=_("Pick all the Cruel options throughout the game"), image = 'gui/cruelAch.png', priority = 'hidden'), 
+        "cowardly": Achievement(name=_("Faint of Heart"), message=_("Pick all the cowardly options throughout the game "), image = 'gui/cowardAch.png', priority = 'hidden')
         ## More of this is explained in 'achievement_screen.rpy'.
 
     }

@@ -1,6 +1,6 @@
 define ath = Character("Bitchy Athlete")
 define bread = Character("Bread Head")
-define pov = Character("Main Character")
+define pov = Character("[name]")
 define older = Character("Older man")
 define creep = Character("Creepy Man")
 define killer = Character("Masked Killer")

@@ -322,7 +322,7 @@ screen navigation():
                     idle "bread.png" at far
                     xpos 1400 
                     ypos 700
-                    action ShowMenu("achievements")
+                    action ShowMenu("achievement_menu")
 
 
 
@@ -596,7 +596,7 @@ screen about():
             text _("Creative Director and Lead Programmer: {a=https://yellow-prince-games.itch.io/}Alex Pulaski{/a}")
             text _("Artist: Dan")
             text _("Music and SFX Artist: {a=https://www.soundcloud.com/october_stereo}October{/a}")
-            text _("Writer and Additional Programmer: Ielin")
+            text _("Writer and Additional Programmer: Ielin Daisy")
 
 
 style about_label is gui_label

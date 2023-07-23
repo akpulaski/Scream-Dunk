@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/obstacleMini.rpy", line 21: keyword argument 'anchor' is incompatible with 'align'.
-    text "[score]" size 78 align(.79,.145) text_align .5 anchor(.5,.5)
-                                                               ^
-
-File "game/obstacleMini.rpy", line 22: keyword argument 'anchor' is incompatible with 'align'.
-    text "[play_time]" size 78 color "#FFFFFF" align(.79,.355) text_align .5 anchor(.5,.5)
-                                                                                   ^
+File "game/achievements/achievements_function.rpy", line 100: invalid syntax
+            "allBad": Achievement(name=_("Rest In Peace"), message=_("Get every bad ending"), image = 'gui/allBadAch.png', priority = 'hidden'), 
+             ^
 
 Ren'Py Version: Ren'Py 8.1.1.23060707
-Sun Jul 23 11:36:02 2023
+Sun Jul 23 14:08:30 2023

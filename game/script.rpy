@@ -3,6 +3,7 @@
 
 label start: 
     play music intro
+    $ name = renpy.input("Please enter your name: ")
     show locker bg with dissolve
     "I blink a few times as I wake with a splitting headache."
     show mc at left
@@ -42,6 +43,7 @@ label bitchyIntroduction:
         menu: 
             "Keep the knife.": 
                 "I don't fully feel safe. I should keep this."
+                $ Achievement.add(achievement_name['gotKnife'])
             "Put the knife down.": 
                 $ hasKnife = False 
                 "I probably don't want to have this on me."
@@ -167,7 +169,8 @@ label initialLineup:
             play audio gunshotFar
             "A gunshot rings out, and I suddenly feel a deep pain in my back before another, and another."
             play music loss
-            show black with fade
+            $ Achievement.add(achievement_name['walkAway'])
+            scene black with fade
             "Everything fades to black."
             jump shotBadEnd
     
@@ -216,6 +219,7 @@ label clickerBegin:
     call screen clicker
 
 label clickWin:
+    $ Achievement.add(achievement_name['survivedRun'])
     play audio gunshotFar
     "As I run, I hear gunshots going off towards the back, but I can't look back now."
     play audio womanScream1
@@ -238,6 +242,7 @@ label clickWin:
     jump longJump
 
 label clickLost:
+    $ Achievement.add(achievement_name['diedRun'])
     scene field horror bg 
     play music loss 
     "I run as hard as I can, but soon I find myself faltering."
@@ -245,7 +250,7 @@ label clickLost:
     show mc scared at right
     killer "Gotcha!"
     "I feel the knife slip between my ribs, then everything goes black as I fall."
-    show black with fade
+    scene black with fade
     play audio fire 
     "I'm aware of the sloshing of a liquid, then feel the flames lick at my skin."
     "I scream in agony in my last few moments."
@@ -275,6 +280,7 @@ label longJump:
     jump start_minigame
 
 label longJumpEnding: 
+    $ Achievement.add(achievement_name['survivedJump'])
     "Finally, everyone has jumped except the final person: the creepy guy."
     "Those who failed have been left to lie where they fell. Making the field a broken mess of bodies, blood, and traps."
     show bread at left 
@@ -391,6 +397,7 @@ label murderSomeone:
             show older shirt scared at right
             older "..."
             "Whatever it takes to win, right?"
+            $ Achievement.add(achievement_name['killedSomone'])
         "Kill the bitchy athlete":
             $ cruel += 1 
             show mc annoyed at left
@@ -405,6 +412,7 @@ label murderSomeone:
             pov "..."
             show older shirt scared at right
             older "..."
+            $ Achievement.add(achievement_name['killedSomeone'])
         "Kill the old man":
             $ cruel += 1
             show mc annoyed at left
@@ -418,6 +426,7 @@ label murderSomeone:
             "You beat him him up as other contestants watch the scene in horror."
             "..."
             "Whatever it takes to win, right?"
+            $ Achievement.add(achievement_name['killedSomeone'])
         "Stay out of it.": 
             $ coward += 1 
             play audio crushed
@@ -437,11 +446,12 @@ label murderSomeone:
     bread "Seems like you've got blood on your hands! I like the enthusiasm, heh heh! Well, at least we are closer to the prize, aren't we?"
     bread "So cheer up, chumps, we are halfway there! No breaks here, we've got to get going. VAMOOSE!"
     hide bread
-    show black with fade
+    scene black with fade
     "The contestants plod back to the field, wondering what sort of hellish nightmare awaits them now..."
     jump obstacleCourseStart
 
 label sacrificeEnd: 
+    $ Achievement.add(achievement_name['sacrificeThird'])
     play music SadEnd
     $ kind += 1 
     if hasKnife:
@@ -449,7 +459,7 @@ label sacrificeEnd:
         play audio impaled
         "A stinging pain shoots from your chest and blood gushes out."
         "Everything fades to black..."
-        show black with fade 
+        scene black with fade 
 
     else:
         play audio crushed
@@ -465,6 +475,12 @@ label obstacleCourseStart:
     scene obstacle horror bg
     "While we were in the locker room the masked killers must have been busy. There is an entire obstacle course set up now, covered in pointy spikes and traps."
     show bread at left
+    if hasIdea and hasKnife: 
+        menu: 
+            "It's time for the Bread Head to pay.": 
+                jump stabbedBread
+            "It won't make a difference.": 
+                "I do nothing, and wait."
     bread "Well well well, time to get yer bodies moving! This is a fun one!"
     bread "An obstacle course consisting of various activities that will test your agility." 
     bread "Be quick! Dont' fall behind, unless you want to get stabby stabbed to death of course, heh heh!"
@@ -474,6 +490,7 @@ label obstacleCourseStart:
 
 label obstacleEnd: 
     if score >= 15: 
+        $ Achievement.add(achievement_name['survivedObstacle'])
         "I make my way up the rope wall, avoiding the glass shards stuck in the rope."
         "I try not to look behind me as the masked killers slowly follow behind with metal poles."
         if not killedBitch: 
@@ -523,7 +540,7 @@ label npcFive:
             $ kind += 1 
             play audio impaled
             "I want to go out in my own way, so I turn the javelin in on my self." 
-            show black with fade
+            scene black with fade
             jump sacrificeEpilogue
         "Kill the girl.": 
             "I know I can hit my target at this distance."
@@ -539,7 +556,7 @@ label npcFive:
             play audio impaled
             show mc scared 
             "She doesn't have the same qualms, and I feel the javelin sink into my stomach."
-            show black with fade
+            scene black with fade
             "Everything fades to black."
             jump badEpilogue
 
@@ -557,7 +574,7 @@ label oldFive:
             $ kind += 1 
             play audio impaled
             "I want to go out in my own way, so I turn the javelin in on my self." 
-            show black with fade
+            scene black with fade
             jump sacrificeEpilogue
         "Kill the older man.": 
             "I know I can hit my target at this distance."
@@ -577,7 +594,7 @@ label oldFive:
                 "But the older man doesn't seem to care. Instead he throws the javelin at me."
                 show mc scared
                 "His aim is true, and the javelin sinks into my chest."
-                show black with fade
+                scene black with fade
                 "Everything fades to black."
                 jump badEpilogue
             
@@ -589,10 +606,11 @@ label javelinKill:
     play music goodEnd noloop
     "I stagger over to the winner's podium and raise my hands into the air in victory."
     show bread at left
+    $ Achievement.add(achievement_name['winner'])
     bread "Woohoo! Ding ding ding, we have a winner!"
     bread "Congratulations, you are the uncontested champion of the Dreadfield Games! You were unstoppable out there."
     "Perhaps its the adrenaline or the fear, but I find myself feeling light headed all of the sudden."
-    show black with fade 
+    scene black with fade 
     "Everything fades to black."
     return
 
@@ -603,6 +621,7 @@ label nowinnerEpilogue:
     hide mc 
     hide older 
     show bread at left 
+    $ Achievement.add(achievement_name['nowinner'])
     bread "N-no! No. No. No! You can't just not kill each other!"
     bread "This is going against the rules! One of you will have to do it!"
     bread "Kill! Kill! Kill! Don't you want the prize?"
@@ -615,7 +634,7 @@ label nowinnerEpilogue:
     "The masked killer suddenly appears again, cocking a gun."
     "At least it will be quick."
     play audio gunshotClose
-    show black with fade
+    scene black with fade
     "Everything fades to black."
     return
 
@@ -627,6 +646,7 @@ label badEpilogue:
     return
 
 label sacrificeEpilogue: 
+    $ Achievement.add(achievement_name['sacrificeThird'])
     play music SadEnd
     scene black 
     show bread at left
@@ -644,7 +664,8 @@ label obstacleDeath:
     play audio crushed
     killer "..."
     "The last thing I see before I die is that stupid orange face."
-    show black with fade 
+    $ Achievement.add(achievement_name['diedObstacle'])
+    scene black with fade 
     return
 
 label shotBadEnd:
@@ -664,6 +685,7 @@ label end_minigame: #End minigame. And jump continue game
     jump longJumpEnding #continue game
 
 label timingFailure:
+    $ Achievement.add(achievement_name['diedJump'])
     play music loss 
     "I take a deep breath and then run towards the sand pit."
     "Unfortunately, I do not make the distance I was hoping to..."
@@ -673,7 +695,7 @@ label timingFailure:
     show bread at left 
     bread "Oh, too bad! That's a lot of blood."
     "I have to agree as everything fades to black."
-    show black with fade 
+    scene black with fade 
     "Better luck next time!"
     "Try again?"
     return
@@ -685,3 +707,14 @@ label obstacleStart:
     $setup_reflex_game() #set up the minigame
     call screen reflex_minigame
     
+label stabbedBread: 
+    "Before he's able to speak in that annoying voice, I jump at the Bread Head with my knife."
+    play audio impaled
+    "I stab into him repeatedly, but I don't see any blood before the masked killers are on me."
+    bread "Oh ho ho, what a fiesty one you are."
+    play audio gunshotClose
+    "The shot rings out, and soon I feel nothing."
+    scene black with fade
+    $ Achievement.add(achievement_name['stabbedBread'])
+    "Everything fades to black."
+    return
