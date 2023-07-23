@@ -131,7 +131,9 @@ label initialLineup:
     bread "Rule Number One: There can be only one winner at the end of the games. Yes, the winner takes it all!"
     bread "Rule Number Two: If you lose, you WILL die. This will be your last stop."
     "At this, the group protests as panic washes over them."
+    show con2 scared at right 
     "Incredulous Contestant" "He can't be serious. This has to be a joke."
+    hide con2 
     show creep scared at right 
     creep "Psh. Incredibly \'funny\'."
     hide creep
@@ -219,6 +221,7 @@ label clickWin:
     play audio womanScream1
     "Pained shrieks fill the air, but I keep running."
     "Beside me, I see the older guy, the athletic woman, and the creep managing to keep good pace."
+    play audio horn
     "A horn blares out, we all hesitantly slow."
     play music main 
     hide killer
@@ -370,24 +373,9 @@ label murderSomeone:
     menu:
         "The air around me grows tense. I decide to..."
         "Sacrifice myself.":        
-            if hasKnife:
-                "You pull the knife out from your waistband and stab yourself over and over again frenziedly."
-                play audio impaled
-                "A stinging pain shoots from your chest and blood gushes out."
-                "Everything fades to black..."
-                show black with fade 
-                jump sacrificeEnd
-            else:
-                play audio crushed
-                "You find an iron shot put ball and bash your head in with it repeatedly. You feel someone try to pull you away..."
-                "Your head is wounded and crimson liquid trickles down from the gaping wound."
-                play audio impaled
-                "Your vision grows blurry as you grab a javelin spear nearby and stab yourself with it..."
-                "Everything fades to black..."
-                show black with fade
-                jump sacrificeEnd
-
+            jump sacrificeEnd
         "Kill the creep.":
+            $ cruel += 1 
             "You resolutely march over to the bench and glare down at the creep with contempt."
             show creep scared at left
             creep "Hey man..."
@@ -404,6 +392,7 @@ label murderSomeone:
             older "..."
             "Whatever it takes to win, right?"
         "Kill the bitchy athlete":
+            $ cruel += 1 
             show mc annoyed at left
             "You grab a skipping rope and throw it over the girl's neck to strangle her."
             show athlete scared at right
@@ -417,6 +406,7 @@ label murderSomeone:
             show older shirt scared at right
             older "..."
         "Kill the old man":
+            $ cruel += 1
             show mc annoyed at left
             "You grab a metal bar and march over to the old guy."
             "One blow a swift strike to his leg and he trips over and lets out a yelp."
@@ -428,6 +418,11 @@ label murderSomeone:
             "You beat him him up as other contestants watch the scene in horror."
             "..."
             "Whatever it takes to win, right?"
+        "Stay out of it.": 
+            $ coward += 1 
+            play audio crushed
+            "I stand beside the older man as the athlete picks up a shot put and pummels the creep."
+            "I feel better about myself having not participated in the killing... but does it really matter?"
 
     play music main
     hide mc
@@ -444,61 +439,216 @@ label murderSomeone:
     hide bread
     show black with fade
     "The contestants plod back to the field, wondering what sort of hellish nightmare awaits them now..."
-    "Here's the end of the current build. Thanks for playing!"
-    return 
+    jump obstacleCourseStart
 
 label sacrificeEnd: 
-    "Oh, how noble."
-    return
+    play music SadEnd
+    $ kind += 1 
+    if hasKnife:
+        "You pull the knife out from your waistband and stab yourself over and over again frenziedly."
+        play audio impaled
+        "A stinging pain shoots from your chest and blood gushes out."
+        "Everything fades to black..."
+        show black with fade 
 
-label killedSomeone: 
-    "Someone is dead now and you did it!"
-    jump outsideGameFour
+    else:
+        play audio crushed
+        "You find an iron shot put ball and bash your head in with it repeatedly. You feel someone try to pull you away..."
+        "Your head is wounded and crimson liquid trickles down from the gaping wound."
+        play audio impaled
+        "Your vision grows blurry as you grab a javelin spear nearby and stab yourself with it..."
+        "Everything fades to black..."
+        show black with fade
+    return 
 
-label outsideGameFour: 
-    "Maybe we put an obstacle course here. I don't have a mini game to go with that necessarily.Suggestions welcome."
-    jump gameFourConclusion
+label obstacleCourseStart: 
+    scene obstacle horror bg
+    "While we were in the locker room the masked killers must have been busy. There is an entire obstacle course set up now, covered in pointy spikes and traps."
+    show bread at left
+    bread "Well well well, time to get yer bodies moving! This is a fun one!"
+    bread "An obstacle course consisting of various activities that will test your agility." 
+    bread "Be quick! Dont' fall behind, unless you want to get stabby stabbed to death of course, heh heh!"
+    bread "Good luck, chumps!"
+    play audio horn 
+    jump obstacleStart
 
-label gameFourConclusion: 
-    bread "Wow that sure was something!"
-    bread "Now that there's only two of you left, it's time for the real fun!"
-    jump outsideGameFive
+label obstacleEnd: 
+    if score >= 15: 
+        "I make my way up the rope wall, avoiding the glass shards stuck in the rope."
+        "I try not to look behind me as the masked killers slowly follow behind with metal poles."
+        if not killedBitch: 
+            play audio womanScream3
+            "I swing across the monkey bars quickly, the athletic woman trying to keep pace. However, she slips and falls."
+            "I can't let myself stop."
+        if not killedCreep: 
+            play audio manScream4
+            "I hear the masked killers catch up with the creep who couldn't pull himself up the rope wall with a bum leg."
+        play audio manScream2
+        "The screams of pain as people fall tears at my stomach."
+        "But I don't stop and make it to the end with a solid landing."
+        play audio horn 
+        show bread at left 
+        play music main
+        bread "WoooHooo! Enthralling! That's the teamspirit, or the lack of it, should I say hmmm?"
+        bread "Haha! Keep it up, you'll definetyly be needing it in the next game!"
+        jump gameFiveRules
+    else: 
+        jump obstacleDeath
 
-label outsideGameFive: 
-    bread "Throw javelins at each other!"
+label gameFiveRules: 
+    scene field horror bg
+    show bread at left 
+    bread "And here we are at the final round!"
+    bread "Woohoo! Pat yourself on the back for making it until here, friends, you've earned it!"
+    bread "But don't celebrate quite yet, only one of you can go home with the grand prize!"
+    bread "So let's get started with the final game, shall we?"
+    bread "An exciting game of javelins. Each f you will have a chance to throw javelins at each other and the last one standing will be the uncontested winner of the match!"
+    bread "Good luck, champs!"
+    hide bread
+    "As the masked killers clear the obstacle course, I see that there's only two of us left. A fitting final end." 
+    if killedOld: 
+        jump npcFive
+    else: 
+        jump oldFive
+
+label npcFive: 
+    "I stare down with the girl who is left."
+    show mc at left 
+    pov "We don't have to do this."
+    show con2 annoyed at right 
+    "Last Contestant" "Don't we?"
+    "The masked killers indicate where we're supposed to stand and then hand us each a single javelin."
     menu: 
-        "Sacrifice yourself.": 
-            jump sacrificeEnd
-        "Kill the other contestant.": 
-            jump winner
+        "Sacrifice myself.": 
+            $ kind += 1 
+            play audio impaled
+            "I want to go out in my own way, so I turn the javelin in on my self." 
+            show black with fade
+            jump sacrificeEpilogue
+        "Kill the girl.": 
+            "I know I can hit my target at this distance."
+            play audio horn 
+            "I throw the javelin as soon as the horn goes off."
+            play audio impaled
+            show con2 scared 
+            "She doesn't have a chance to react to the javelin sinking into her chest."
+            jump javelinKill
+        "Refuse to participate": 
+            play audio horn
+            "I hold the javelin off to the side, clearly not going to throw it."
+            play audio impaled
+            show mc scared 
+            "She doesn't have the same qualms, and I feel the javelin sink into my stomach."
+            show black with fade
+            "Everything fades to black."
+            jump badEpilogue
+
+label oldFive: 
+    "I stare down with the older man who is left."
+    show mc at left 
+    pov "We don't have to do this."
+    show older shirt at right
+    if kind > cruel: 
+        older "No, we don't."
+    else: 
+        older "..."
+    menu: 
+        "Sacrifice myself.": 
+            $ kind += 1 
+            play audio impaled
+            "I want to go out in my own way, so I turn the javelin in on my self." 
+            show black with fade
+            jump sacrificeEpilogue
+        "Kill the older man.": 
+            "I know I can hit my target at this distance."
+            play audio horn
+            "I throw the javelin as soon as the horn goes off."
+            play audio impaled
+            show older shirt scared 
+            "He doesn't have a chance to reach to the javelin sinking into his chest."
+            jump javelinKill
         "Refuse to participate.": 
-            if goodPerson: 
-                jump breadTantrum
+            play audio horn
+            "I hold the javelin off to the side, clearly not going to throw it."
+            if kind > cruel: 
+                "The older man does the same thing."
+                jump nowinnerEpilogue 
             else: 
-                jump brutallyMurdered
-        "Aim at the other contestant, without confidence.": 
-            jump bleedOut
+                "But the older man doesn't seem to care. Instead he throws the javelin at me."
+                show mc scared
+                "His aim is true, and the javelin sinks into my chest."
+                show black with fade
+                "Everything fades to black."
+                jump badEpilogue
+            
 
-label winner: 
-    "You did it! You survived Dreadfield Games!"
+label javelinKill: 
+    "My victim lets out a gurgle and bleeds to death."
+    scene podium horror bg 
+    show mc at right 
+    play music goodEnd noloop
+    "I stagger over to the winner's podium and raise my hands into the air in victory."
+    show bread at left
+    bread "Woohoo! Ding ding ding, we have a winner!"
+    bread "Congratulations, you are the uncontested champion of the Dreadfield Games! You were unstoppable out there."
+    "Perhaps its the adrenaline or the fear, but I find myself feeling light headed all of the sudden."
+    show black with fade 
+    "Everything fades to black."
     return
 
-label breadTrantrum: 
-    bread "No! You can't just not kill each other!"
-    bread "One of you have to do it!"
-    "But you and the other contestant don't."
+label nowinnerEpilogue: 
+    play music SadEnd
+    "I let out a sigh."
+    "The Bread Head seems troubled by the whole exchange."
+    hide mc 
+    hide older 
+    show bread at left 
+    bread "N-no! No. No. No! You can't just not kill each other!"
+    bread "This is going against the rules! One of you will have to do it!"
+    bread "Kill! Kill! Kill! Don't you want the prize?"
+    "He jumps up and down like a petulant child."
+    "Once he sees that we have both made up our minds, he seems miffed."
+    bread "Hmphf. Bah! no prizes for you then."
+    bread "What a buncha losers. But don't think the fun is over yet, heh heh!"
+    show killer at right
+    killer "..."
+    "The masked killer suddenly appears again, cocking a gun."
+    "At least it will be quick."
+    play audio gunshotClose
+    show black with fade
+    "Everything fades to black."
     return
 
-label brutallyMurdered: 
-    "You don't attack, but the other contestant has other ideas."
+label badEpilogue: 
+    play music badEnd noloop
+    "No act of mercy here. That isn't how the world works."
+    "Your luck had to run out sooner or later."
+    "I can here the Bread Head's cheery words as I vaguely feel myself dragged off somewhere."
     return
 
-label bleedOut: 
-    "You stab without conviction. So does your opponent."
-    "You both bleed out wishing that the other had more backbone and killed you more quickly."
+label sacrificeEpilogue: 
+    play music SadEnd
+    scene black 
+    show bread at left
+    bread "Ah, how charming. What a gentlemen. A noble act, indeed!"
+    bread "Why even bother in the first place then, huh?"
+    bread "Strange happenings, but now we finally have a winner!"
+    "I can here the Bread Head's cheery words as I vaguely feel myself dragged off somewhere."
+    return 
+
+
+label obstacleDeath: 
+    play music badEnd noloop
+    "I make it to the climbing nets before a masked killer catches up with me."
+    show killer at right 
+    play audio crushed
+    killer "..."
+    "The last thing I see before I die is that stupid orange face."
+    show black with fade 
     return
 
 label shotBadEnd:
+    play music badEnd noloop
     "Maybe walking away wasn't the best idea."
     "Try again?"
     return
@@ -527,3 +677,11 @@ label timingFailure:
     "Better luck next time!"
     "Try again?"
     return
+
+
+label obstacleStart: 
+    play music minigame
+    centered "Click the Bread Heads as they appear!{w=1}{nw}"
+    $setup_reflex_game() #set up the minigame
+    call screen reflex_minigame
+    

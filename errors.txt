@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 323: expected a keyword argument or end of line.
-    ypos 1000: 
-             ^
+File "game/obstacleMini.rpy", line 21: keyword argument 'anchor' is incompatible with 'align'.
+    text "[score]" size 78 align(.79,.145) text_align .5 anchor(.5,.5)
+                                                               ^
+
+File "game/obstacleMini.rpy", line 22: keyword argument 'anchor' is incompatible with 'align'.
+    text "[play_time]" size 78 color "#FFFFFF" align(.79,.355) text_align .5 anchor(.5,.5)
+                                                                                   ^
 
 Ren'Py Version: Ren'Py 8.1.1.23060707
-Sat Jul 22 17:46:31 2023
+Sun Jul 23 11:36:02 2023

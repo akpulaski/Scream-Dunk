@@ -310,13 +310,14 @@ screen navigation():
                 text _("{color=#000000}{font=MBASliceMono-Regular.otf}Preferences{/color}{/font}") xpos 180 ypos 920
                 imagebutton auto "gui/knife_%s.png" xpos 800 ypos 500: 
                     action ShowMenu("about")
-                text _("{color=#000000}{font=MBASliceMono-Regular.otf}About{/color}{/font}") xpos 950 ypos 520
+                text _("{color=#000000}{font=MBASliceMono-Regular.otf}About & Credits{/color}{/font}") xpos 820 ypos 520
                 imagebutton auto "gui/knife_%s.png" xpos 800 ypos 700: 
                     action ShowMenu("help")
                 text _("{color=#000000}{font=MBASliceMono-Regular.otf}Help{/color}{/font}") xpos 950 ypos 720
                 imagebutton auto "gui/knife_%s.png" xpos 800 ypos 900: 
                     action Quit(confirm= not main_menu)
                 text _("{color=#000000}{font=MBASliceMono-Regular.otf}Quit{/color}{/font}") xpos 950 ypos 920
+                text _("{color=#FFFFFF}{font=MBASliceMono-Regular.otf}Achievements{/color}{/font}") xpos 1500 ypos 650
                 imagebutton: 
                     idle "bread.png" at far
                     xpos 1400 
@@ -592,6 +593,10 @@ screen about():
                 text "[gui.about!t]\n"
 
             text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Creative Director and Lead Programmer: {a=https://yellow-prince-games.itch.io/}Alex Pulaski{/a}")
+            text _("Artist: Dan")
+            text _("Music and SFX Artist: {a=https://www.soundcloud.com/october_stereo}October{/a}")
+            text _("Writer and Additional Programmer: Ielin")
 
 
 style about_label is gui_label
