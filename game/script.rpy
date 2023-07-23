@@ -342,12 +342,113 @@ label halfTime:
     hide older 
     show athlete annoyed at left 
     ath "Besides, you don't really know how many of those masked freaks are with him. There's at least two, but maybe there's more."
+    hide athlete
+    hide creep
+    play audio loudspeakerCrackle
     "Any further discussion is interupted by a voice over the loudspeaker again."
+    jump murderSomeone
+    
+#Round 3 (murder someone)
+label murderSomeone:
+    show bread at left
+    bread "Woohoo! We are halfway there! I'm sure the past games were wonderfully exhilarating but you all deserve a break. You've earned it!"
+    bread "This round will be an interesting one, you don't have to compete! You will just have to make a choice."
+    bread "Yes, one of you will be eliminated from the game and the remaining ones will move on to the next round, but the choice is up to you!"
+    bread "YOU choose who gets to be eliminated."
+    bread "Good luck, champs, you are halfway there!"
+    hide bread
+    "Silence."
+    "Everyone in the locker room just cast nervous glances at each other."
+    show bluehair annoyed at left
+    "Another Bitchy Athlete" "He is halfway dead, isn't he."
+    "The creep with a bloodied broken leg is lying on one of the benches. Everyone turns back to look at him."
+    show athlete annoyed at right
+    ath "I say we get rid of that dirtbag."
+    hide bluehair 
+    hide athlete
+    play music loss
+    menu:
+        "The air around me grows tense. I decide to..."
+        "Sacrifice myself.":        
+            if hasKnife:
+                "You pull the knife out from your waistband and stab yourself over and over again frenziedly."
+                play audio impaled
+                "A stinging pain shoots from your chest and blood gushes out."
+                "Everything fades to black..."
+                show black with fade 
+                jump sacrificeEnd
+            else:
+                play audio crushed
+                "You find an iron shot put ball and bash your head in with it repeatedly. You feel someone try to pull you away..."
+                "Your head is wounded and crimson liquid trickles down from the gaping wound."
+                play audio impaled
+                "Your vision grows blurry as you grab a javelin spear nearby and stab yourself with it..."
+                "Everything fades to black..."
+                show black with fade
+                jump sacrificeEnd
+
+        "Kill the creep.":
+            "You resolutely march over to the bench and glare down at the creep with contempt."
+            show creep scared at left
+            creep "Hey man..."
+            creep "P-please don't."
+            hide creep
+            "Too bad."
+            play audio manScream4
+            "You ball up your fists and start striking him repeatedly with increasing aggressiveness."
+            "His face becomes a disfigured bloody mush."
+            "Other contestants, except the old man, also participate in the killing."
+            show mc annoyed at left
+            pov "..."
+            show older shirt scared at right
+            older "..."
+            "Whatever it takes to win, right?"
+        "Kill the bitchy athlete":
+            show mc annoyed at left
+            "You grab a skipping rope and throw it over the girl's neck to strangle her."
+            show athlete scared at right
+            ath "What the-"
+            hide athlete
+            play audio womanScream2
+            "She tries to loosen the rope by tugging it but it becomes increasingly hard as the rope constricts her neck."
+            "Her movements slow down and she is in her death throes."
+            "She eventually collapses and her lifeless limp body drops down on the floor..."
+            pov "..."
+            show older shirt scared at right
+            older "..."
+        "Kill the old man":
+            show mc annoyed at left
+            "You grab a metal bar and march over to the old guy."
+            "One blow a swift strike to his leg and he trips over and lets out a yelp."
+            play audio manScream3
+            show older shirt scared at right
+            older "AAAAARGH!"
+            hide older
+            play audio crushed
+            "You beat him him up as other contestants watch the scene in horror."
+            "..."
+            "Whatever it takes to win, right?"
+
+    play music main
+    hide mc
+    hide older
+    show killer annoyed at left
+    "After a few minutes, a few of the masked killers barge into the room and view the bloody scene."
+    show killer sad at left
+    play audio loudspeakerCrackle
+    "They mumble something and the loudspeakers crackle back on as the Bread Head's chirpy voice rings through."
+    hide killer
+    show bread at left
+    bread "Seems like you've got blood on your hands! I like the enthusiasm, heh heh! Well, at least we are closer to the prize, aren't we?"
+    bread "So cheer up, chumps, we are halfway there! No breaks here, we've got to get going. VAMOOSE!"
+    hide bread
+    show black with fade
+    "The contestants plod back to the field, wondering what sort of hellish nightmare awaits them now..."
     "Here's the end of the current build. Thanks for playing!"
     return 
 
 label sacrificeEnd: 
-    "Oh how noble."
+    "Oh, how noble."
     return
 
 label killedSomeone: 
