@@ -4,7 +4,7 @@ define audio.gamesBegin = "let the games begin.mp3"
 define audio.minigame = "minigame.mp3"
 define audio.loss = "loss.mp3"
 define audio.badEnd = "bad_ending_stinger.wav"
-define audio.SadEnd = "sad_ending_stinger.wav"
+define audio.SadEnd = "sad_ending_stinger.mp3"
 define audio.goodEnd = "unhinged_stinger.wav"
 
 define audio.crushed = "crushed.wav"

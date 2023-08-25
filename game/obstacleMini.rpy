@@ -24,7 +24,7 @@ screen reflex_minigame:
     if renpy.get_screen("countdown_timer") == None: 
         if "lit" not in button_states:
             timer 0.1 action Function(light_button) repeat False
-        timer 1.0 action If(play_time > 1, SetVariable("play_time", play_time -1), Jump("afterObstacle")) repeat If(play_time >1, True, False)   
+        timer 1.0 action If(play_time > 1, SetVariable("play_time", play_time -1), Jump("obstacleEnd")) repeat If(play_time >1, True, False)   
             
 init python: 
     import random

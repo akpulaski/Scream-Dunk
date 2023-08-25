@@ -93,7 +93,7 @@ label olderIntroduction:
         "Pull the knife on the creep." if hasKnife: 
             $ cruel += 1
             "I pull the knife out from my waistband and point it at the creep."
-            show mc annoyed at center 
+            show mc annoyed at right 
             pov "Stop it! Now."
             show creep scared 
             creep "What the f-"
@@ -254,7 +254,7 @@ label clickLost:
     play audio fire 
     "I'm aware of the sloshing of a liquid, then feel the flames lick at my skin."
     "I scream in agony in my last few moments."
-    call achievementCheck from _call_achievementCheck
+    call achievementCheck
     return
 
 
@@ -382,7 +382,6 @@ label murderSomeone:
         "Sacrifice myself.":        
             jump sacrificeEnd
         "Kill the creep.":
-            $ killedCreep = True 
             $ cruel += 1 
             "You resolutely march over to the bench and glare down at the creep with contempt."
             show creep scared at left
@@ -399,9 +398,8 @@ label murderSomeone:
             show older shirt scared at right
             older "..."
             "Whatever it takes to win, right?"
-            $ Achievement.add(achievement_name['killedSomeone'])
+            $ Achievement.add(achievement_name['killedSomone'])
         "Kill the bitchy athlete":
-            $ killedBitch = True 
             $ cruel += 1 
             show mc annoyed at left
             "You grab a skipping rope and throw it over the girl's neck to strangle her."
@@ -417,7 +415,6 @@ label murderSomeone:
             older "..."
             $ Achievement.add(achievement_name['killedSomeone'])
         "Kill the old man":
-            $ killedOld = True
             $ cruel += 1
             show mc annoyed at left
             "You grab a metal bar and march over to the old guy."
@@ -473,7 +470,7 @@ label sacrificeEnd:
         "Your vision grows blurry as you grab a javelin spear nearby and stab yourself with it..."
         "Everything fades to black..."
         show black with fade
-    call achievementCheck from _call_achievementCheck_1
+    call achievementCheck
     return 
 
 label obstacleCourseStart: 
@@ -494,7 +491,6 @@ label obstacleCourseStart:
     jump obstacleStart
 
 label obstacleEnd: 
-    hide bread
     if score >= 15: 
         $ Achievement.add(achievement_name['survivedObstacle'])
         "I make my way up the rope wall, avoiding the glass shards stuck in the rope."
@@ -525,8 +521,7 @@ label gameFiveRules:
     bread "Woohoo! Pat yourself on the back for making it until here, friends, you've earned it!"
     bread "But don't celebrate quite yet, only one of you can go home with the grand prize!"
     bread "So let's get started with the final game, shall we?"
-    bread "An exciting game of javelins."
-    bread "Each of you will have a chance to throw javelins at each other and the last one standing will be the uncontested winner of the match!"
+    bread "An exciting game of javelins. Each f you will have a chance to throw javelins at each other and the last one standing will be the uncontested winner of the match!"
     bread "Good luck, champs!"
     hide bread
     "As the masked killers clear the obstacle course, I see that there's only two of us left. A fitting final end." 
@@ -619,7 +614,7 @@ label javelinKill:
     "Perhaps its the adrenaline or the fear, but I find myself feeling light headed all of the sudden."
     scene black with fade 
     "Everything fades to black."
-    call achievementCheck from _call_achievementCheck_2
+    call achievementCheck
     return
 
 label nowinnerEpilogue: 
@@ -644,7 +639,7 @@ label nowinnerEpilogue:
     play audio gunshotClose
     scene black with fade
     "Everything fades to black."
-    call achievementCheck from _call_achievementCheck_3
+    call achievementCheck
     return
 
 label badEpilogue: 
@@ -652,7 +647,7 @@ label badEpilogue:
     "No act of mercy here. That isn't how the world works."
     "Your luck had to run out sooner or later."
     "I can here the Bread Head's cheery words as I vaguely feel myself dragged off somewhere."
-    call achievementCheck from _call_achievementCheck_4
+    call achievementCheck
     return
 
 label sacrificeEpilogue: 
@@ -664,7 +659,7 @@ label sacrificeEpilogue:
     bread "Why even bother in the first place then, huh?"
     bread "Strange happenings, but now we finally have a winner!"
     "I can here the Bread Head's cheery words as I vaguely feel myself dragged off somewhere."
-    call achievementCheck from _call_achievementCheck_5
+    call achievementCheck
     return 
 
 
@@ -677,14 +672,14 @@ label obstacleDeath:
     "The last thing I see before I die is that stupid orange face."
     $ Achievement.add(achievement_name['diedObstacle'])
     scene black with fade 
-    call achievementCheck from _call_achievementCheck_6
+    call achievementCheck
     return
 
 label shotBadEnd:
     play music badEnd noloop
     "Maybe walking away wasn't the best idea."
     "Try again?"
-    call achievementCheck from _call_achievementCheck_7
+    call achievementCheck
     return
 
 #starts the long jump mini game
@@ -711,7 +706,7 @@ label timingFailure:
     scene black with fade 
     "Better luck next time!"
     "Try again?"
-    call achievementCheck from _call_achievementCheck_8
+    call achievementCheck
     return
 
 
@@ -731,7 +726,7 @@ label stabbedBread:
     scene black with fade
     $ Achievement.add(achievement_name['stabbedBread'])
     "Everything fades to black."
-    call achievementCheck from _call_achievementCheck_9
+    call achievementCheck
     return
 
 label achievementCheck: 
@@ -742,4 +737,9 @@ label achievementCheck:
             Achievement.add(achievement_name['cruel'])
         if coward >= 2: 
             Achievement.add(achievement_name['coward'])
-       
+        if Achievement.has(achievement_name['diedRun'].name) and \
+        Achievement.has(achievement_name['diedObstacle'].name) and \
+        Achievement.has(achievement_name['diedJump'].name) and \
+        Achievement.has(achievement_name['nowinner'].name) and \
+        Achievement.has(achievement_name['loser'].name): 
+            Achievement.add(achievement_name['allBad'])

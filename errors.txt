@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/achievements/achievements_function.rpy", line 100: invalid syntax
-            "allBad": Achievement(name=_("Rest In Peace"), message=_("Get every bad ending"), image = 'gui/allBadAch.png', priority = 'hidden'), 
+File "game/script.rpy", line 734: invalid syntax
+    if kind => 3: 
              ^
 
 Ren'Py Version: Ren'Py 8.1.1.23060707
-Sun Jul 23 14:08:30 2023
+Sun Jul 23 19:21:26 2023

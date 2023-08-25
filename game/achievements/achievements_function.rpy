@@ -97,7 +97,7 @@ init python:
         "nowinner": Achievement(name=_("Bread Dead"), message=_("Survived till the fifth round, and chose compassion. Slain for being \"no fun.\""), image = 'gui/noFunAch.png', priority = 'hidden'), 
         "loser": Achievement(name=_("Spear-itual Delimna"), message=_("Hesitated in the final round but your opponent had never faltered. Their javelin finds its mark."), image = 'gui/loserAch.png', priority = 'hidden'), 
         "winner": Achievement(name=_("Dreadfield Victor"), message=_("Embraced destiny's duel, and won. Victory ending in triumph in the Dreadfield's brutal arena."), image = 'gui/winnerAch.png', priority = 'hidden'),
-        "allBad": Achievement(name=_("Rest In Peace"), message=_("Get every bad ending"), image = 'gui/allBadAch.png', priority = 'hidden'), 
+        "allBad": Achievement(name=_("Rest In Peace"), message=_("Get every bad ending"), image = 'gui/allBadAch.png', priority = 'platinum'), 
         "kind": Achievement(name=_("Kind Soul"), message=_("Pick all the Kind options throughout the game"), image = 'gui/kindAch.png', priority = 'hidden'), 
         "cruel": Achievement(name=_("Crimson Reaper"), message=_("Pick all the Cruel options throughout the game"), image = 'gui/cruelAch.png', priority = 'hidden'), 
         "cowardly": Achievement(name=_("Faint of Heart"), message=_("Pick all the cowardly options throughout the game "), image = 'gui/cowardAch.png', priority = 'hidden')
